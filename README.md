@@ -18,9 +18,14 @@ The OpenAM callback URL is where Duo should redirect users to after they have fi
 ## Development
 You will need a ForgeRock Backstage account attached to an OpenAM subscription in order to download the dependencies. [Create an account](https://backstage.forgerock.com/) & then contact your OpenAM administrators for help with that.
 
-Once you are part of a subscription, visit [their article on accessing their private Maven repositories](https://backstage.forgerock.com/knowledge/kb/article/a74096897) for instructions on configuring your Maven install with credentials. Notably, [their generated ~/.m2/settings.xml](https://maven.forgerock.org/artifactory/private-releases/settings.xml) must be downloaded & put in place.
+Once you are part of a subscription, visit [their article on accessing their private Maven repositories](https://backstage.forgerock.com/knowledge/kb/article/a74096897) for instructions on configuring your Maven install with credentials. Notably, [their generated ~/.m2/settings.xml](https://maven.forgerock.org/artifactory/private-releases/settings.xml) must be downloaded & put in place. The Maven settings file, settings.xml, is usually located in the .m2 directory within your home directory on Windows, which looks like C:\Users\bob\.m2/settings.xml.
 
-From there, you can load the project up. Maven will retrieve all necessary dependencies.
+Now you can build the jar file from a terminal in the project directory.
+```console
+mvn package
+```
+
+Maven will retrieve all necessary dependencies.
 
 ## Releasing
 To prepare a release, update the `pom.xml` file and bump the version. Then, create a tag prefixed with a `v`. There is a GitHub Action to release the package, which will convert the tag into a release and attach the jar file.
